@@ -29,10 +29,19 @@ describe('File System', ()=> {
      
     });
   });
-  describe('updateJSON')
-  // const updateJSON = (path, object) => readJSON(path)
-  //   .then(oldData => ({ ...oldData, ...object }))
-  //   .then(newData => writeJSON(path, newData));
+  describe('update JSON', () => {
+    describe('updating values', () => {
+      it('changes contents of a file with new values', () => {
+        return updateJSON('./doberman/puppy', { message: 'hi', name: 'spot', age: 5, color: 'blue' })
+          .then(() => {
+            return fs.readFile('./doberman/puppy', 'utf8');
+          }).then((contents) => {
+            expect(contents).toEqual('{"message":"hi","name":"spot","age":5,"color":"blue"}');
+            })
+          });
+      });
+    });
+  });
 
   afterAll(() => {
     fs.rmdir('./doberman', { recursive: true });
