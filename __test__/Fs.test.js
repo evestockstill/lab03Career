@@ -1,5 +1,5 @@
 const fs = require('fs').promises;
-const { mkdirp, writeJSON } = require('../lib/Fs');
+const { mkdirp, writeJSON, readJSON, readDirectoryJSON } = require('../lib/Fs');
 
 describe('File System', ()=> {
   beforeAll(() => {
@@ -12,10 +12,25 @@ describe('File System', ()=> {
         .then(() => {
           return fs.readFile('./doberman/puppy', 'utf8');
         })
-        .then((contents) => expect(contents).toEqual('{"message":"hi"}'));
+        .then((contents) => expect(JSON.parse(contents)).toEqual({ message: 'hi' }));
     });
   });
-            
+  describe('readJSON', () => {
+    it('reads JSON object', () => {
+      return readJSON('./doberman/puppy')
+        .then((contents) => expect(contents).toEqual({ message:'hi' }));
+    });  
+  }); 
+  describe('readDirectoryJSON', () => {
+    it('reads all files', () => {
+      return readDirectoryJSON('./doberman')
+        .then((contents) => expect(contents)
+          .toEqual(['puppy']));
+      
+     
+    });
+  });
+
   afterAll(() => {
     fs.rmdir('./doberman', { recursive: true });
   });

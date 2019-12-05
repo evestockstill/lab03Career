@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">63.64% </span>
+        <span class="strong">57.89% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>7/11</span>
+        <span class='fraction'>11/19</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>0/6</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">50% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/4</span>
+        <span class='fraction'>5/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75% </span>
+        <span class="strong">53.33% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>6/8</span>
+        <span class='fraction'>8/15</span>
       </div>
     </div>
     <p class="quiet">
@@ -73,8 +73,13 @@
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -85,14 +90,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -101,7 +113,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const fs = require('fs').promises;
-const uuid = require('uuid');
 &nbsp;
 const mkdirp = (path) =&gt; {
   fs.mkdir((path), { recursive: true }, <span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
@@ -111,29 +122,36 @@ const mkdirp = (path) =&gt; {
 &nbsp;
 &nbsp;
 const writeJSON = (path, object) =&gt; fs.writeFile(path, JSON.stringify(object), <span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
-<span class="cstat-no" title="statement not covered" >  if(err) <span class="cstat-no" title="statement not covered" >throw err;</span></span>
+<span class="cstat-no" title="statement not covered" >  if(err) {</span>
+<span class="cstat-no" title="statement not covered" >    console.log('error');</span>
+  }
 });
 &nbsp;
 &nbsp;
-// const readJSON = (path, object) =&gt; {
-//   fs.readFile(path, JSON.parse(object), (err) =&gt; {
-   
-//     if(err) {
-   
-//     }
-//   });
-// };
+const readJSON = (path) =&gt; fs.readFile(path, 'utf8', <span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
+<span class="cstat-no" title="statement not covered" >  if(err) {</span>
+<span class="cstat-no" title="statement not covered" >    console.log('error!');</span>
+  }
+})
+  .then(content =&gt; JSON.parse(content));
+&nbsp;
+const readDirectoryJSON = (path) =&gt; fs.readdir(path, <span class="fstat-no" title="function not covered" >(e</span>rr, files) =&gt; {
+<span class="cstat-no" title="statement not covered" >  files.forEach(<span class="fstat-no" title="function not covered" >(f</span>ile) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    return file;</span>
+  });
+});
 &nbsp;
 &nbsp;
 &nbsp;
-module.exports = { mkdirp, writeJSON };
+&nbsp;
+module.exports = { mkdirp, writeJSON, readJSON, readDirectoryJSON }; 
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Dec 04 2019 15:59:00 GMT-0800 (Pacific Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Dec 04 2019 17:36:31 GMT-0800 (Pacific Standard Time)
 </div>
 </div>
 <script src="prettify.js"></script>
