@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1575509791542" clover="3.2.0">
-  <project timestamp="1575509791542" name="All files">
-    <metrics statements="74" coveredstatements="67" conditionals="40" coveredconditionals="34" methods="29" coveredmethods="24" elements="143" coveredelements="125" complexity="0" loc="74" ncloc="74" packages="1" files="4" classes="4"/>
+<coverage generated="1575510369092" clover="3.2.0">
+  <project timestamp="1575510369092" name="All files">
+    <metrics statements="77" coveredstatements="68" conditionals="40" coveredconditionals="34" methods="32" coveredmethods="24" elements="149" coveredelements="126" complexity="0" loc="77" ncloc="77" packages="1" files="4" classes="4"/>
     <file name="Fs.js" path="/Users/evestockstill/careerTrack/lab03Career/lib/Fs.js">
-      <metrics statements="15" coveredstatements="8" conditionals="6" coveredconditionals="0" methods="10" coveredmethods="5"/>
+      <metrics statements="18" coveredstatements="9" conditionals="6" coveredconditionals="0" methods="13" coveredmethods="5"/>
       <line num="1" count="1" type="stmt"/>
       <line num="3" count="1" type="stmt"/>
       <line num="4" count="1" type="stmt"/>
@@ -18,7 +18,10 @@
       <line num="24" count="1" type="stmt"/>
       <line num="25" count="0" type="stmt"/>
       <line num="26" count="0" type="stmt"/>
-      <line num="33" count="1" type="stmt"/>
+      <line num="29" count="1" type="stmt"/>
+      <line num="30" count="0" type="stmt"/>
+      <line num="31" count="0" type="stmt"/>
+      <line num="35" count="1" type="stmt"/>
     </file>
     <file name="Schema.js" path="/Users/evestockstill/careerTrack/lab03Career/lib/Schema.js">
       <metrics statements="14" coveredstatements="14" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
